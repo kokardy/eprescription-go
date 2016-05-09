@@ -1,11 +1,25 @@
 package epres
 
+import (
+	"fmt"
+)
+
 /*
 Numberは有理数型.
 1/3個などに対応できるように
 */
 type Number struct {
-	child, mother int
+	Child, Mother int
+}
+
+//Stringは分数表記
+func (n Number) String() string {
+	return fmt.Sprintf("%d/%d", n.Child, n.Mother)
+}
+
+//Floatは小数表記
+func (n Number) Float() float64 {
+	return (float64)(n.Child) / (float64)(n.Mother)
 }
 
 /*
@@ -18,7 +32,7 @@ type Unit struct {
 }
 
 /*
-Amountは量を示す有理数型と単位構造体からなる.
+Amountは投与量を示す有理数型と単位構造体からなる.
 勧告にしたがって倍散などでは秤取量(製剤量)で記載
 かつ1回量表記
 */
@@ -28,7 +42,7 @@ type Amount struct {
 }
 
 /*
-Medicineは薬品用構造体.
+Medicineは薬品を表現する構造体.
 YJコードが同じ薬品を区別するためにHOTコードも用意.
 想定されるバターンは
 
@@ -81,15 +95,21 @@ Patientは患者構造体.
 	Address:麻薬処方箋の場合必要
 */
 type Patient struct {
-	Id, Name, Address string
+	Id, Name, Hoken, Address string
 }
 
+//Doctorは医師
 type Doctor struct {
 	Ka, Name, MayakuLicense string
 }
 
+//Hospitalは病院・診療所
+type Hospital struct {
+	Code, Name string
+}
+
 /*
-Prescription構造体.
+Prescriptionは処方箋を表す
 処方箋はRpの集合で表現
 処方箋全体としてのコメントや
 患者情報・医療機関情報・処方医などの処方箋の必要項目
