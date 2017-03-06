@@ -2,7 +2,8 @@ package epres
 
 //Hospitalは病院・診療所
 type Hospital interface {
-	Version() string
+	Versioner
 	Code() string
 	Name() string
+	Address() string
 }

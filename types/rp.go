@@ -8,7 +8,7 @@ Rp inteface.
  Comment:Rp（用法）に対するコメント
 */
 type Rp interface {
-	Version() string
+	Versioner
 	Medicines() []Medicine
 	Usage() Usage
 	Comment() string
