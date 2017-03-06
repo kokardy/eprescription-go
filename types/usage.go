@@ -7,7 +7,7 @@ Usageは用法interface.
 タイミングのリストで表現
 */
 type Usage interface {
-	Version() string
+	Versioner
 	MedisCode() string
 	MedisName() string
 	Times() []string

@@ -19,12 +19,13 @@ Name:名称変更もあるのである程度好きな名前にしてもいい
 
 */
 type Medicine interface {
-	Version() string
+	Versioner
+	GenericFlager //後発切り替え可不可
+
 	YjCode() string
 	HotCode() string
 	GenericCode() string
 	Name() string
-	GenericOK() bool
 	Amount() Amount
 	Comment() string
 }

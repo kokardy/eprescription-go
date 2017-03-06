@@ -5,7 +5,7 @@ import (
 )
 
 type Patient interface {
-	Version() string
+	Versioner
 	Id() string
 	Name() string
 	Hoken() string
