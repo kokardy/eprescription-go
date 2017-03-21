@@ -33,3 +33,13 @@ func (d Date) NewDate(year int, month time.Month, day int, location string) Date
 func (d Date) Distance(d2 Date) Duration {
 	return Duration(d.Sub(d2.Time))
 }
+
+type Birthdayer interface {
+	Birthday() Date
+}
+
+func Age(b Birthdayer) Duration {
+	today := Today()
+	birthday := b.Birthday()
+	return birthday.Distance(today)
+}

@@ -10,6 +10,7 @@ type Prescription interface {
 	Versioner
 	GenericFlager //後発切り替え可不可
 
+	Hospital() Hospital
 	Pt() Patient
 	Dr() Doctor
 	Rps() []Rp
